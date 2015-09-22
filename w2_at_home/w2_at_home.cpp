@@ -18,7 +18,7 @@
 using namespace std;
 #include "AccountNumber.h"
 using namespace sict;
-
+void displayAccountNumber(const AccountNumber* acc);
 int main(){
   AccountNumber myNumber;
   char name[41];
@@ -35,16 +35,20 @@ int main(){
     cin >> bankCode >> branchCode >> accNumber;
     myNumber.setName(name);
     myNumber.setAccountNumber(bankCode, branchCode, accNumber);
-    myNumber.display();
-    cout << "-------------" << endl;
-    myNumber.display(false);
-    cout << "-------------" << endl;
-    myNumber.display(true, false);
-    cout << "-------------" << endl;
-    myNumber.display(false,false);
+    
+    displayAccountNumber(&myNumber);
 
   } while (!myNumber.isValid()
     && cout << "Invalid account number, (999 999 9999), try again: ");
   cout << "Thank you!" << endl;
   return 0;
+}
+void displayAccountNumber(const AccountNumber* acc){
+  acc->display();
+  cout << "-------------" << endl;
+  acc->display(false);
+  cout << "-------------" << endl;
+  acc->display(true, false);
+  cout << "-------------" << endl;
+  acc->display(false, false);
 }
